@@ -2,6 +2,7 @@ package team6.oit.database2.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -31,7 +32,9 @@ public class Sample3AuthConfiguration {
             .requestMatchers("/sample4/**").authenticated() // /sample4/以下は認証済みであること
             .requestMatchers("/sample5/**").authenticated() // /sample5/以下は認証済みであること
             .requestMatchers("/sample58*").authenticated() // /sample58*は認証済みであること
+            .requestMatchers("/sample58/**").authenticated() // /sample58/以下は認証済みであること
             .anyRequest().permitAll()) // 上記以外は全員アクセス可能
+        .httpBasic(Customizer.withDefaults()) // curl -u でユーザ名とパスワードを送ってログインできるようにする
         .csrf(csrf -> csrf
             .ignoringRequestMatchers("/h2-console/*", "/sample2*/**")) // sample2用にCSRF対策を無効化
         .headers(headers -> headers
@@ -61,12 +64,12 @@ public class Sample3AuthConfiguration {
         .password("{bcrypt}$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e").roles("ADMIN").build();
     // customer1 p@ss
     UserDetails customer1 = User.withUsername("customer1")
-        .password("{bcrypt}$2a$10$y2JxPI7HwYB9ouUcaO3fqemx9mVCJ/jf6s.p4i3gCO6FMb0WkLW7u")
+        .password("{bcrypt}$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e")
         .roles("CUSTOMER")
         .build();
     // customer2 p@ss
     UserDetails customer2 = User.withUsername("customer2")
-        .password("{bcrypt}$2a$10$y2JxPI7HwYB9ouUcaO3fqemx9mVCJ/jf6s.p4i3gCO6FMb0WkLW7u")
+        .password("{bcrypt}$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e")
         .roles("CUSTOMER")
         .build();
     // seller p@ss
