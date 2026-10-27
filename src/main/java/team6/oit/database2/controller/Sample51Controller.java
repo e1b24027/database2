@@ -15,7 +15,7 @@ import team6.oit.database2.model.Fruit;
 import team6.oit.database2.model.FruitMapper;
 
 /**
- * /sample5へのリクエストを扱うクラス authenticateの設定をしていれば， /sample5へのアクセスはすべて認証が必要になる
+ * /sample5へのリクエストを扱うクラス authenticateの設定をしていれば， /sample5へのアクセスはすべて認証が必要になる/
  */
 @Controller
 @RequestMapping("/sample5")
