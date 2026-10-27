@@ -61,7 +61,7 @@ public class Sample3AuthConfiguration {
         .password("{bcrypt}$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e").roles("ADMIN").build();
     // customer1 p@ss
     UserDetails customer1 = User.withUsername("customer1")
-        .password("{bcrypt}$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e")
+        .password("{bcrypt}$2a$10$y2JxPI7HwYB9ouUcaO3fqemx9mVCJ/jf6s.p4i3gCO6FMb0WkLW7u")
         .roles("CUSTOMER")
         .build();
     // customer2 p@ss
